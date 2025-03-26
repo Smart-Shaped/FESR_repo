@@ -3,11 +3,11 @@ ml:
     readers:
       default: ""
       reader1:
-        class: "com.smartshaped.smart_fesr.ml.CustomReader"
+        class: "com.smartshaped.smartfesr.ml.CustomReader"
         path: "/tif"
   cassandra:
     model:
-      class: "com.smartshaped.smart_fesr.common.utils.TableModelExample"
+      class: "com.smartshaped.smartfesr.common.utils.TableModelExample"
     node: "127.0.0.1"
     port: "9042"
     datacenter: "datacenter1"
@@ -15,7 +15,7 @@ ml:
       name: "test"
       replication_factor: 1
   blackbox:
-    class: "com.smartshaped.smart_fesr.ml.blackbox.PythonBlackboxExample"
+    class: "com.smartshaped.smartfesr.ml.blackbox.PythonBlackboxExample"
     inputs: "input"
     output: "output"
     modelPath: "model_path"
@@ -30,9 +30,9 @@ ml:
         key2: "value2"
         key3: "value3"
   pipeline:
-    class: "com.smartshaped.smart_fesr.ml.PipelineExample"
+    class: "com.smartshaped.smartfesr.ml.PipelineExample"
   modelSaver:
-    class: "com.smartshaped.smart_fesr.ml.ModelSaverExample"
+    class: "com.smartshaped.smartfesr.ml.ModelSaverExample"
 data_fusion:
   RequestHandler: "default"
   downloader:
@@ -70,11 +70,11 @@ data_fusion:
   data_fusions:
     data_fusion1:
       inputPath: ""
-      class: "com.smartshaped.smart_fesr.data_fusion.DataFusionExample"
+      class: "com.smartshaped.smartfesr.datafusion.DataFusionExample"
       downloader:
-        class: "com.smartshaped.smart_fesr.data_fusion.DownloaderExample"
-      transformer: "com.smartshaped.smart_fesr.data_fusion.TransformerExample"
-      preprocessor: "com.smartshaped.smart_fesr.data_fusion.PreprocessorExample"
+        class: "com.smartshaped.smartfesr.datafusion.DownloaderExample"
+      transformer: "com.smartshaped.smartfesr.datafusion.TransformerExample"
+      preprocessor: "com.smartshaped.smartfesr.datafusion.PreprocessorExample"
       saver:
         class: "DataFusionSaver"
         path: "/some/path"
