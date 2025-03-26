@@ -28,5 +28,4 @@ docker/hadoop
 docker/spark_jars
 docker/jars
 
-/docker
 /docs
