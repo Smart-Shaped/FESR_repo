@@ -139,7 +139,8 @@ class DataFusionConfigurationUtilsTest {
   void getPreprocessorParams() throws ConfigurationException {
     DataFusionConfigurationUtils dataFusionConfigurationUtils =
         DataFusionConfigurationUtils.getDataFusionConf();
-    assertDoesNotThrow(() -> dataFusionConfigurationUtils.getPreprocessorParams("DataFusionExample"));
+    assertDoesNotThrow(
+        () -> dataFusionConfigurationUtils.getPreprocessorParams("DataFusionExample"));
   }
 
   @Test
@@ -161,7 +162,8 @@ class DataFusionConfigurationUtilsTest {
     DataFusionConfigurationUtils dataFusionConfigurationUtils =
         DataFusionConfigurationUtils.getDataFusionConf();
     assertDoesNotThrow(
-        () -> dataFusionConfigurationUtils.getPreprocessor("data_fusion.data_fusions.data_fusion1"));
+        () ->
+            dataFusionConfigurationUtils.getPreprocessor("data_fusion.data_fusions.data_fusion1"));
   }
 
   @Test
@@ -169,7 +171,8 @@ class DataFusionConfigurationUtilsTest {
     DataFusionConfigurationUtils dataFusionConfigurationUtils =
         DataFusionConfigurationUtils.getDataFusionConf();
     assertDoesNotThrow(
-        () -> dataFusionConfigurationUtils.getPreprocessor("data_fusion.data_fusions.data_fusion2"));
+        () ->
+            dataFusionConfigurationUtils.getPreprocessor("data_fusion.data_fusions.data_fusion2"));
   }
 
   @Test
@@ -182,7 +185,9 @@ class DataFusionConfigurationUtilsTest {
 
       DataFusionConfigurationUtils dataFusionConfigurationUtils =
           DataFusionConfigurationUtils.getDataFusionConf();
-      doReturn("wrongPreprocessorClass").when(yamlConfig).getString("dataFusionId.preprocessor", "");
+      doReturn("wrongPreprocessorClass")
+          .when(yamlConfig)
+          .getString("dataFusionId.preprocessor", "");
       assertThrows(
           ConfigurationException.class,
           () -> dataFusionConfigurationUtils.getPreprocessor("dataFusionId"));
@@ -217,7 +222,8 @@ class DataFusionConfigurationUtilsTest {
         DataFusionConfigurationUtils.getDataFusionConf();
     assertThrows(
         ConfigurationException.class,
-        (() -> dataFusionConfigurationUtils.getDownloader("data_fusion.data_fusions.data_fusion2")));
+        (() ->
+            dataFusionConfigurationUtils.getDownloader("data_fusion.data_fusions.data_fusion2")));
   }
 
   @Test
@@ -230,7 +236,9 @@ class DataFusionConfigurationUtilsTest {
 
       DataFusionConfigurationUtils dataFusionConfigurationUtils =
           DataFusionConfigurationUtils.getDataFusionConf();
-      doReturn("wrongPreprocessorClass").when(yamlConfig).getString("dataFusionId.downloader.class");
+      doReturn("wrongPreprocessorClass")
+          .when(yamlConfig)
+          .getString("dataFusionId.downloader.class");
       assertThrows(
           ConfigurationException.class,
           () -> dataFusionConfigurationUtils.getDownloader("dataFusionId"));

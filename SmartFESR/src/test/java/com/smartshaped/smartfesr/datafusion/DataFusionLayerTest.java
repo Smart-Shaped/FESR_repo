@@ -52,7 +52,9 @@ class DataFusionLayerTest {
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<CassandraUtils> dataFusionSaver = mockStatic(CassandraUtils.class);
         MockedStatic<SedonaContext> sedonaContext = mockStatic(SedonaContext.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       sedonaContext.when(SedonaContext::builder).thenReturn(builder);
       when(configurationUtils.getRequestHandler()).thenReturn(requestHandler);
       when(configurationUtils.getSparkConf()).thenReturn(sparkConf);
@@ -68,7 +70,9 @@ class DataFusionLayerTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<CassandraUtils> dataFusionSaver = mockStatic(CassandraUtils.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
 
       assertThrows(ConfigurationException.class, DataFusionLayer::new);
     }
@@ -80,7 +84,9 @@ class DataFusionLayerTest {
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<CassandraUtils> dataFusionSaver = mockStatic(CassandraUtils.class);
         MockedStatic<SedonaContext> sedonaContext = mockStatic(SedonaContext.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       sedonaContext.when(SedonaContext::builder).thenReturn(builder);
       when(configurationUtils.getRequestHandler()).thenReturn(requestHandler);
       when(configurationUtils.getSparkConf()).thenReturn(sparkConf);

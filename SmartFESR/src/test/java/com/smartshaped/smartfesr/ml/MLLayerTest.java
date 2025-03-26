@@ -35,8 +35,7 @@ class MLLayerTest {
   List<HdfsReader> readerList;
   @Mock SparkSession sedona;
   @Mock Pipeline pipeline;
-  @Mock
-  Blackbox blackBox;
+  @Mock Blackbox blackBox;
   @Mock ModelSaver modelSaver;
   @Mock MLConfigurationUtils configurationUtils;
   @Mock HdfsReader reader;

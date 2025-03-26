@@ -34,8 +34,7 @@ class ModelSaverTest {
   @Mock MLConfigurationUtils mlConfigurationUtils;
   @Mock TableModel tableModel;
   @Mock Pipeline pipeline;
-  @Mock
-  Blackbox blackBox;
+  @Mock Blackbox blackBox;
   Model model;
   @Mock MLWriter mlWriter;
   @Mock Dataset<Row> predictions;

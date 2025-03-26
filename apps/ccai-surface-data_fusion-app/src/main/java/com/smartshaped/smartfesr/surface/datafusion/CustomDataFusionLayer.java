@@ -6,8 +6,7 @@ import com.smartshaped.smartfesr.datafusion.DataFusionLayer;
 
 public class CustomDataFusionLayer extends DataFusionLayer {
 
-    public CustomDataFusionLayer() throws ConfigurationException, CassandraException {
-        super();
-    }
-
+  public CustomDataFusionLayer() throws ConfigurationException, CassandraException {
+    super();
+  }
 }

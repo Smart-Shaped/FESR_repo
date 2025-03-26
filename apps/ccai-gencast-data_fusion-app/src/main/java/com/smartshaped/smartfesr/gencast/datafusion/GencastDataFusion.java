@@ -10,18 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GencastDataFusion extends DataFusion {
-    private static final Logger logger = LogManager.getLogger(GencastDataFusion.class);
+  private static final Logger logger = LogManager.getLogger(GencastDataFusion.class);
 
-    public GencastDataFusion() throws ConfigurationException {
-        super();
-    }
+  public GencastDataFusion() throws ConfigurationException {
+    super();
+  }
 
-    @Override
-    protected List<String> extractParams(Request req) {
-        List <String> list = new ArrayList<>();
-        list.add(req.getContent());
-        return list;
-    }
-
-
+  @Override
+  protected List<String> extractParams(Request req) {
+    List<String> list = new ArrayList<>();
+    list.add(req.getContent());
+    return list;
+  }
 }

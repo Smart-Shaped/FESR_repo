@@ -54,7 +54,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
       DataFusionExample dataFusionExample = new DataFusionExample();
@@ -67,7 +69,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
       DataFusionExample dataFusionExample = new DataFusionExample();
@@ -80,7 +84,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
       DataFusionExample dataFusionExample = new DataFusionExample();
@@ -93,7 +99,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
       when(downloaderExample.download(paramList, request)).thenThrow(ConfigurationException.class);
@@ -107,7 +115,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
       when(configurationUtils.getPreprocessor(anyString())).thenReturn(preprocessorExample);
@@ -122,7 +132,9 @@ class DataFusionTest {
     try (MockedStatic<DataFusionConfigurationUtils> confUtils =
             mockStatic(DataFusionConfigurationUtils.class);
         MockedStatic<DataFusionSaver> dataFusionSaver = mockStatic(DataFusionSaver.class)) {
-      confUtils.when(DataFusionConfigurationUtils::getDataFusionConf).thenReturn(configurationUtils);
+      confUtils
+          .when(DataFusionConfigurationUtils::getDataFusionConf)
+          .thenReturn(configurationUtils);
       when(configurationUtils.getDataFusionId(anyString())).thenReturn("data_fusion1");
       when(configurationUtils.getDownloader(anyString())).thenReturn(downloaderExample);
 

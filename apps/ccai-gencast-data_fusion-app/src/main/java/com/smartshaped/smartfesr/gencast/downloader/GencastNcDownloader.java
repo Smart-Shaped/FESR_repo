@@ -35,19 +35,17 @@ public class GencastNcDownloader extends BinaryDownloader {
   }
 
   @Override
-  public void closeConnections() throws DownloaderException {
-
-  }
+  public void closeConnections() throws DownloaderException {}
 
   @Override
   protected String createStructuredFileName(String url) {
     int lastSlashIndex = url.lastIndexOf("/");
     int secondLastSlashIndex = url.lastIndexOf("/", lastSlashIndex - 1);
-    
+
     if (secondLastSlashIndex == -1) {
-    	return url;
+      return url;
     } else {
-    	return url.substring(secondLastSlashIndex + 1);
+      return url.substring(secondLastSlashIndex + 1);
     }
   }
 }

@@ -54,7 +54,7 @@ ml:
       extraScripts: "gencast_pipeline.py,blackbox_methods.py"
       requirementsPath: "requirements.txt"
       extraArguments:
-        modelVersion: "GenCast 1p0deg Mini <2019.npz"
+        modelVersion: "GenCast 0p25deg Operational <2022.npz"
         bbox: "{\"min_lon\":1, \"min_lat\":35, \"max_lon\":23, \"max_lat\":48}"
   modelSaver:
     class: "com.smartshaped.smartfesr.gencast.ml.GenCastModelSaver"

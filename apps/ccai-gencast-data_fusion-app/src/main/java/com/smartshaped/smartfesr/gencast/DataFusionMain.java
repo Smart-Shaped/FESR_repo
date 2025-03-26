@@ -7,11 +7,13 @@ import com.smartshaped.smartfesr.ml.exception.HdfsReaderException;
 
 public class DataFusionMain {
 
-    public static void main(String[] args) throws HdfsReaderException, ConfigurationException, CassandraException, DataFusionLayerException {
+  public static void main(String[] args)
+      throws HdfsReaderException,
+          ConfigurationException,
+          CassandraException,
+          DataFusionLayerException {
 
-        CustomDataFusionLayer dataFusionLayer = new CustomDataFusionLayer();
-        dataFusionLayer.start();
-
-    }
-
+    CustomDataFusionLayer dataFusionLayer = new CustomDataFusionLayer();
+    dataFusionLayer.start();
+  }
 }
