@@ -1,0 +1,90 @@
+ml:
+  hdfs:
+    readers:
+      default: ""
+      reader1:
+        class: "com.smartshaped.smart_fesr.ml.CustomReader"
+        path: "/tif"
+  cassandra:
+    model:
+      class: "com.smartshaped.smart_fesr.common.utils.TableModelExample"
+    node: "127.0.0.1"
+    port: "9042"
+    datacenter: "datacenter1"
+    keyspace:
+      name: "test"
+      replication_factor: 1
+  blackbox:
+    class: "com.smartshaped.smart_fesr.ml.blackbox.PythonBlackboxExample"
+    inputs: "input"
+    output: "output"
+    modelPath: "model_path"
+    folder: "/user/spark/blackbox"
+    python:
+      scriptPath: "script.py"
+      extraScripts: "extra_script.py"
+      libraries: "library1,library2"
+      requirementsPath: "requirements.txt"
+      extraArguments:
+        key1: "value1"
+        key2: "value2"
+        key3: "value3"
+  pipeline:
+    class: "com.smartshaped.smart_fesr.ml.PipelineExample"
+  modelSaver:
+    class: "com.smartshaped.smart_fesr.ml.ModelSaverExample"
+data_fusion:
+  RequestHandler: "default"
+  downloader:
+    DownloaderTwoExample:
+      params:
+        variables: "var1, var2"
+    DownloaderExample:
+      params:
+        start: "20100101"
+        end: "20100201"
+        community: "ag"
+        parameters: "par1,par2,par3"
+        header: "true"
+        time-standard: "lst"
+        site-elevation: "0"
+      url:
+        schema: "https"
+        authority: "super.auth"
+        path: "/api/some/path"
+      path:
+        hdfs-path: "/user/spark/Downloads/CopernicusMaps"
+  preprocessor:
+    TifRescalerPreprocessor:
+      params:
+        splittingFactorX: "64"
+        splittingFactorY: "64"
+        rescalingFactorX: "0.01"
+        rescalingFactorY: "0.01"
+    DataFusionExample:
+      params:
+        splittingFactorX: "64"
+        splittingFactorY: "64"
+        rescalingFactorX: "0.01"
+        rescalingFactorY: "0.01"
+  data_fusions:
+    data_fusion1:
+      inputPath: ""
+      class: "com.smartshaped.smart_fesr.data_fusion.DataFusionExample"
+      downloader:
+        class: "com.smartshaped.smart_fesr.data_fusion.DownloaderExample"
+      transformer: "com.smartshaped.smart_fesr.data_fusion.TransformerExample"
+      preprocessor: "com.smartshaped.smart_fesr.data_fusion.PreprocessorExample"
+      saver:
+        class: "DataFusionSaver"
+        path: "/some/path"
+        checkpoint: ""
+    data_fusion2:
+test:
+  spark:
+    master: "local[*]"
+    deploy-mode: "client"
+    app-name: "test"
+    interval-sec: 600
+  cassandra:
+    checkpoint: ""

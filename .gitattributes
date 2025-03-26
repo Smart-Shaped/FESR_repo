@@ -1,0 +1,5 @@
+*.sh text eol=lf
+*.py text eol=lf
+
+/docker/spark_image/prebuildfs/usr/sbin/install_packages text eol=lf
+/docker/spark_image/prebuildfs/usr/sbin/run-script text eol=lf

@@ -15,3 +15,18 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# IDE
+/SmartFESR/.idea
+/SmartFESR/.settings
+/.vscode
+/.idea
+FESR_repo.iml
+
+## files copied from containers file systems
+docker/hadoop
+docker/spark_jars
+docker/jars
+
+/docker
+/docs
