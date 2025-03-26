@@ -1,0 +1,68 @@
+data_fusion:
+  RequestHandler: "default"
+  downloader:
+    SurfaceDownloader:
+      params:
+        host: "ftp-server"
+        port: "21"
+        username: "ftpuser"
+        password: "testpassword"
+        isActive: "true"
+      path:
+        hdfs-path: "/user/spark/Downloads/SurfaceFTP"
+      url:
+        basePath: ""
+  preprocessor:
+  data_fusions:
+    data_fusion1:
+      class: "com.smartshaped.smartfesr.surface.datafusion.datafusions.SurfaceDataFusion"
+      downloader:
+        class: "com.smartshaped.smartfesr.surface.datafusion.downloaders.SurfaceDownloader"
+      transformer: ""
+      preprocessor: ""
+      saver:
+        class: "DataFusionSaver"
+        path: "ProcessedSurfaceFTP"
+        checkpoint: ""
+  spark:
+    app:
+      name: "data_fusion-application"
+    metrics:
+      namespace: "batch-reviews"
+    yarn:
+      am:
+        cores: 2
+        memory: "2G"
+    driver:
+      memory: "4G"
+      cores: 2
+    executor:
+      memory: "4G"
+      instances: 1
+      cores: 2
+    serializer: "org.apache.spark.serializer.KryoSerializer"
+    sql:
+      parquet:
+        compression:
+          codec: "zstd"
+    hadoop:
+      parquet:
+        page:
+          size:
+            row:
+              check:
+                min: 2
+                max: 10
+      dfs:
+        replication: 1
+    cassandra:
+      connection:
+        host: "cassandra1"
+        port: "9042"
+  cassandra:
+    model:
+      class: ""
+    datacenter: "datacenter1"
+    keyspace:
+      name: "data_fusion_keyspace"
+      replication_factor: 1
