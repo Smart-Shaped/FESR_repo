@@ -28,4 +28,3 @@ docker/spark_jars
 docker/jars
 
 /docs
-/apps/ccai-gencast-ml-app

@@ -1,0 +1,67 @@
+ml:
+  spark:
+    app:
+      name: "GenCast-ml-app"
+    yarn:
+      am:
+        cores: 1
+        memory: "1G"
+    driver:
+      memory: "25G"
+      cores: 4
+    executor:
+      memory: "20G" # increase memory in spark-env
+      instances: 1
+      cores: 4
+    serializer: "org.apache.spark.serializer.KryoSerializer"
+    sql:
+      parquet:
+        compression:
+          codec: "zstd"
+      execution:
+        arrow:
+          pyspark:
+            enabled: "true"
+    hadoop:
+      fs:
+        defaultFS: "hdfs://namenode:8020"
+      parquet:
+        page:
+          size:
+            row:
+              check:
+                min: 2
+                max: 10
+      dfs:
+        replication: 1
+    cassandra:
+      connection:
+        host: "cassandra1"
+        port: "9042"
+  hdfs:
+    readers:
+      default: ""
+      reader1:
+        class: "com.smartshaped.smartfesr.gencast.ml.GenCastHdfsReader"
+        path: "/user/spark/Processed/GencastNcProcessed"
+  blackbox:
+    class: "com.smartshaped.smartfesr.gencast.ml.GenCastBlackbox"
+    output: "prediction"
+    modelPath: "/user/spark/GenCast/model"
+    folder: "/opt/bitnami/spark/GenCast"
+    python:
+      scriptPath: "script.py"
+      extraScripts: "gencast_pipeline.py,blackbox_methods.py"
+      requirementsPath: "requirements.txt"
+      extraArguments:
+        modelVersion: "GenCast 1p0deg Mini <2019.npz"
+        bbox: "{\"min_lon\":1, \"min_lat\":35, \"max_lon\":23, \"max_lat\":48}"
+  modelSaver:
+    class: "com.smartshaped.smartfesr.gencast.ml.GenCastModelSaver"
+  cassandra:
+    model:
+      class: "com.smartshaped.smartfesr.gencast.ml.model.GenCastPrediction"
+    datacenter: "datacenter1"
+    keyspace:
+      name: "ml_keyspace"
+      replication_factor: 1

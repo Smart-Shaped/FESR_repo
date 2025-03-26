@@ -1,0 +1,6 @@
+google-cloud-storage
+py4j
+xarray
+netcdf4
+hdfs
+pyarrow

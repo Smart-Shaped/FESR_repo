@@ -1,0 +1,6 @@
+typeMapping:
+  String: "text"
+  long: "bigint"
+  int: "int"
+  float: "float"
+  Timestamp: "timestamp"
