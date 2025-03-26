@@ -28,5 +28,4 @@ docker/spark_jars
 docker/jars
 
 /docs
-/apps/ccai-gencast-data_fusion-app
 /apps/ccai-gencast-ml-app

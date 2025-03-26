@@ -1,0 +1,62 @@
+data_fusion:
+  RequestHandler: "default"
+  downloader:
+    GencastNcDownloader:
+      url:
+        basePath: "https://storage.googleapis.com/dm_graphcast/gencast/"
+      path:
+        hdfs-path: "/user/spark/Downloads/GenCast"
+  preprocessor:
+  data_fusions:
+    data_fusion1:
+      class: "com.smartshaped.smartfesr.gencast.datafusion.GencastDataFusion"
+      downloader:
+        class: "com.smartshaped.smartfesr.gencast.downloader.GencastNcDownloader"
+      transformer: ""
+      preprocessor: ""
+      saver:
+        class: "DataFusionSaver"
+        path: "/user/spark/Processed/GencastNcProcessed"
+        checkpoint: ""
+  spark:
+    app:
+      name: "data_fusion-application"
+    metrics:
+      namespace: "batch-reviews"
+    yarn:
+      am:
+        cores: 2
+        memory: "2G"
+    driver:
+      memory: "4G"
+      cores: 2
+    executor:
+      memory: "4G"
+      instances: 1
+      cores: 2
+    serializer: "org.apache.spark.serializer.KryoSerializer"
+    sql:
+      parquet:
+        compression:
+          codec: "zstd"
+    hadoop:
+      parquet:
+        page:
+          size:
+            row:
+              check:
+                min: 2
+                max: 10
+      dfs:
+        replication: 1
+    cassandra:
+      connection:
+        host: "cassandra1"
+        port: "9042"
+  cassandra:
+    model:
+      class: ""
+    datacenter: "datacenter1"
+    keyspace:
+      name: "data_fusion_keyspace"
+      replication_factor: 1

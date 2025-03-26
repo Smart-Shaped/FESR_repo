@@ -39,10 +39,10 @@ ml:
     readers:
       default: ""
       reader1:
-        class: "com.smartshaped.smart_fesr.ml.CustomHdfsReader"
+        class: "com.smartshaped.smartfesr.ml.CustomHdfsReader"
         path: "/user/spark/topic1/data.parquet"
       reader2:
-        class: "com.smartshaped.smart_fesr.ml.CustomHdfsReader"
+        class: "com.smartshaped.smartfesr.ml.CustomHdfsReader"
         path: "/user/spark/checkpoint/topic2"
   pipeline:
     class: "com.smartshaped.fesr.ml.CustomPipeline"
@@ -50,7 +50,7 @@ ml:
     class: "com.smartshaped.fesr.ml.CustomModelSaver"
   cassandra:
     model:
-      class: "com.smartshaped.smart_fesr.ml.models.CustomModel"
+      class: "com.smartshaped.smartfesr.ml.models.CustomModel"
     datacenter: "datacenter1"
     keyspace:
       name: "ml_keyspace"
