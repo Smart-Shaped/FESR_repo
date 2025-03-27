@@ -1,5 +1,11 @@
 package com.smartshaped.smartfesr.common.utils;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.when;
+
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import com.datastax.oss.driver.api.core.cql.BoundStatement;
@@ -7,31 +13,18 @@ import com.datastax.oss.driver.api.core.cql.PreparedStatement;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
 import com.smartshaped.smartfesr.common.exception.CassandraException;
 import com.smartshaped.smartfesr.common.exception.ConfigurationException;
-
+import java.lang.reflect.Field;
+import java.net.InetSocketAddress;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import org.apache.spark.sql.*;
-import org.apache.spark.sql.streaming.DataStreamWriter;
-import org.apache.spark.sql.streaming.OutputMode;
-import org.apache.spark.sql.streaming.StreamingQuery;
-import org.apache.spark.sql.streaming.Trigger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.MockedStatic;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.lang.reflect.Field;
-import java.net.InetSocketAddress;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.TimeoutException;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.mockStatic;
-import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CassandraUtilsTest {
@@ -45,8 +38,6 @@ class CassandraUtilsTest {
   @Mock TableModel tableModel;
   @Mock Dataset<Row> df;
   @Mock DataFrameWriter<Row> dfw;
-  @Mock DataStreamWriter<Row> dsw;
-  @Mock StreamingQuery sq;
 
   String node;
   String dataCenter;
@@ -242,25 +233,6 @@ class CassandraUtilsTest {
     when(dfw.mode(SaveMode.Append)).thenReturn(dfw);
 
     assertDoesNotThrow(() -> cassandraUtils.saveDF(df, tableModel));
-  }
-
-  @Test
-  void testSaveStreamDF() throws ConfigurationException, CassandraException, TimeoutException {
-    createInstance();
-    CassandraUtils cassandraUtils = CassandraUtils.getCassandraUtils(configurationUtils);
-    when(tableModel.isGenerateUuid()).thenReturn(true);
-    when(tableModel.getTableName()).thenReturn("test");
-    when(df.withColumn("id", functions.expr("uuid()"))).thenReturn(df);
-
-    when(df.writeStream()).thenReturn(dsw);
-    when(dsw.format(anyString())).thenReturn(dsw);
-    when(dsw.options(anyMap())).thenReturn(dsw);
-    when(dsw.option(anyString(), any())).thenReturn(dsw);
-    when(dsw.outputMode(OutputMode.Append())).thenReturn(dsw);
-    when(dsw.trigger(Trigger.ProcessingTime(1000L))).thenReturn(dsw);
-    when(dsw.start()).thenReturn(sq);
-
-    assertDoesNotThrow(() -> cassandraUtils.saveStreamDF(df, tableModel, 1000L));
   }
 
   @Test

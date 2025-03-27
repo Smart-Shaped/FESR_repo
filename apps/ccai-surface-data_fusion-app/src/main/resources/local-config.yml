@@ -28,7 +28,7 @@ data_fusion:
     app:
       name: "data_fusion-application"
     metrics:
-      namespace: "batch-reviews"
+      namespace: "data_fusion-surface"
     yarn:
       am:
         cores: 2

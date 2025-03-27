@@ -26,5 +26,3 @@ FESR_repo.iml
 docker/hadoop
 docker/spark_jars
 docker/jars
-
-/docs

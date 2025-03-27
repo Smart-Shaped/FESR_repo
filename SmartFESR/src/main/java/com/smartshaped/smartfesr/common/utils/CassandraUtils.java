@@ -19,8 +19,6 @@ import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SaveMode;
 import org.apache.spark.sql.functions;
-import org.apache.spark.sql.streaming.OutputMode;
-import org.apache.spark.sql.streaming.Trigger;
 
 /**
  * Utility class to interact with Cassandra database and execute queries.
@@ -433,51 +431,6 @@ public class CassandraUtils {
           .mode(SaveMode.Append)
           .save();
       logger.info("DataFrame saved to Cassandra table {} successfully", table);
-    } catch (Exception e) {
-      throw new CassandraException("Failed to save DataFrame to Cassandra", e);
-    }
-  }
-
-  /**
-   * Saves a DataFrame to a Cassandra table in streaming mode.
-   *
-   * <p>This method will check if the TableModel specifies a primary key. If not, it will generate a
-   * UUID as a primary key and add it to the DataFrame. Then, it will save the DataFrame to the
-   * Cassandra table using the {@link SaveMode#Append} mode and {@link Trigger#ProcessingTime}
-   * trigger.
-   *
-   * <p>This method will throw a {@link CassandraException} if any error occurs during the
-   * execution.
-   *
-   * @param df the DataFrame to be saved
-   * @param tableModel the TableModel from which to get the table name and primary key information
-   * @param intervalMs the interval in milliseconds for triggering the write operation
-   * @throws CassandraException if any error occurs during the execution
-   * @throws ConfigurationException if the Cassandra configuration cannot be loaded
-   */
-  public void saveStreamDF(Dataset<Row> df, TableModel tableModel, Long intervalMs)
-      throws CassandraException, ConfigurationException {
-
-    String table = tableModel.getTableName();
-    boolean generateUuid = tableModel.isGenerateUuid();
-    String checkpoint = configurationUtils.getCassandraCheckpoint();
-
-    if (generateUuid) {
-      logger.debug("Adding UUID field as primary key");
-      df = df.withColumn("id", functions.expr("uuid()"));
-    }
-
-    df.printSchema();
-
-    try {
-      df.writeStream()
-          .format("org.apache.spark.sql.cassandra")
-          .options(Map.of("keyspace", keyspace, "table", table))
-          .option("checkpointLocation", checkpoint)
-          .outputMode(OutputMode.Append())
-          .trigger(Trigger.ProcessingTime(intervalMs))
-          .start();
-      logger.info("DataFrame saved to Cassandra table {} in streaming mode successfully", table);
     } catch (Exception e) {
       throw new CassandraException("Failed to save DataFrame to Cassandra", e);
     }
