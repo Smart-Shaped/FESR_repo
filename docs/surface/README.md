@@ -8,7 +8,9 @@
 
 - Go on [Surface](https://github.com/opencdms/surface) GitHub repository and clone it
 
-- Copy the [production.env](production.env) file inside the "api" folder
+- Copy the [production.env](resources/production.env) file inside the `api` folder
+
+- Use this [Dockerfile](resources/Dockerfile) to replace the one in the `api` folder
 
 ## 2. Run Surface on Docker
 
@@ -25,7 +27,7 @@
 
 ## 3. Populate Surface DB
 
-- Connect to the psql cli through this command (it will asks to insert the "dba" user password, which is the one written in the [production.env](resources/production.env)):
+- Connect to the psql cli through this command (it will asks to insert the `dba` user password, which is the one written in the [production.env](resources/production.env)):
      ```bash
      docker compose exec postgres psql -U dba -h postgres -d postgres
      ```
@@ -36,7 +38,7 @@
      exit
      ```
 
-- Then connect again to the psql cli, but this time running it on the newly created "surface_db":
+- Then connect again to the psql cli, but this time running it on the newly created `surface_db`:
      ```bash
      docker compose exec postgres psql -U dba -h postgres -d surface_db
      ```
@@ -49,10 +51,17 @@
 
 - At this point run the following commands to initialize the database:
      ```bash
-     docker compose exec api python manage.py migrate
+     docker compose exec api bash
      ```
+
+     and then:
+
      ```bash
-     docker compose exec api python manage.py loaddata /surface/fixtures/*
+     python manage.py migrate
+     ```
+
+     ```bash
+     python manage.py loaddata /surface/fixtures/*
      ```
 - Then copy the three [sql script](resources) into the surface root folder and run these commands:
      ```bash
