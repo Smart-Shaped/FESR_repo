@@ -1,5 +1,9 @@
 # How to Run a Spark Application on YARN and View Logs
 
+## Prerequisites
+
+The Spark container leverages NVIDIA RAPIDS for enhanced performance on GPU-equipped systems. Ensure that your environment is configured to utilize GPUs by following the official [installation guide](https://docs.rapids.ai/install/).
+
 ## 1. Environment Preparation
 
 ### 1.1 Navigate to the `docker` Directory
