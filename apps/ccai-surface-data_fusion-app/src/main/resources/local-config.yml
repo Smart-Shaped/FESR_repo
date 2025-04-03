@@ -31,11 +31,11 @@ data_fusion:
       namespace: "data_fusion-surface"
     yarn:
       am:
-        cores: 2
-        memory: "2G"
+        cores: 1
+        memory: "1G"
     driver:
-      memory: "4G"
-      cores: 2
+      memory: "1G"
+      cores: 1
     executor:
       memory: "4G"
       instances: 1
@@ -57,7 +57,7 @@ data_fusion:
         replication: 1
     cassandra:
       connection:
-        host: "cassandra1"
+        host: "cassandra"
         port: "9042"
   cassandra:
     model:
