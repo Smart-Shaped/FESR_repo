@@ -2,10 +2,6 @@
 
 This repository contains the source code for the SmartFESR framework, a modular and scalable framework designed to support machine learning applications. The framework is designed to be highly customizable and to support a wide range of use cases.
 
-## Documentation
-
-The documentation for the framework can be found in the [docs/framework](docs/framework) directory.
-
 ## Docker
 
 The framework can be used with Docker. The Docker documentation can be found in the [docs/docker](docs/docker) directory.
