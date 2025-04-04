@@ -37,7 +37,7 @@ The steps to reproduce the study are as follows:
     CREATE TABLE IF NOT EXISTS data_fusion_keyspace.request (
         id UUID PRIMARY KEY,
         content TEXT,
-        harvesterids TEXT,
+        datafusionids TEXT,
         state TEXT
     );
     ```
