@@ -1,0 +1,71 @@
+.App {
+  text-align: center;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.heatmap-container {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 70px;
+}
+
+.navbar-brand {
+  font-weight: 600;
+}
+
+.navbar-brand img {
+  margin-right: 10px;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+}
+
+.dropdown-toggle {
+  font-weight: 500;
+  padding: 8px 16px !important;
+}
+
+.nav-item {
+  margin: 0 5px;
+}
+
+.dropdown-menu {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 8px 16px;
+}
+
+.query-button {
+  margin-left: 15px;
+  padding: 8px 20px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.query-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.footer-banner {
+  max-height: 80px;
+  object-fit: contain;
+}
+
+footer {
+  border-top: 1px solid #e7e7e7;
+  margin-top: 2rem;
+}
