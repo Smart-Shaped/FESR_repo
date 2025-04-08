@@ -53,7 +53,7 @@ The steps to reproduce the study are as follows:
 - Execute the `gencast-ml` application to perform the inference using the pre-trained model with data up to 2021 at a resolution of 0.25°. This application requires a GPU to run and should be executed in standalone mode.
 
   ```bash
-  spark-submit --class com.smartshaped.smartfesr.gencast.ml.GenCastMLApp --master spark://spark-master:7077 ./extra_jars/gencast-ml-app.jar
+  spark-submit --class com.smartshaped.smartfesr.gencast.ml.GenCastMLApp --master spark://spark-master:7077 ./extra_jars/gencast-ml.jar
   ```
 
   - The result is the writing of the inference data and the difference with respect to the real values of the test set in the Cassandra table `gencastprediction` in the `ml_keyspace` keyspace.
