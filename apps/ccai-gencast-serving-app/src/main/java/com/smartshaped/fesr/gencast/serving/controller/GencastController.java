@@ -266,36 +266,36 @@ public class GencastController {
 
     combinedModel.setId(model.getId());
 
-    combinedModel.setGeopotential(addFloats(model.getGeopotential(), model.getGeopotentialError()));
+    combinedModel.setGeopotential(calculateReal(model.getGeopotential(), model.getGeopotentialError()));
     combinedModel.setMeanSeaLevelPressure(
-        addFloats(model.getMeanSeaLevelPressure(), model.getMeanSeaLevelPressureError()));
+        calculateReal(model.getMeanSeaLevelPressure(), model.getMeanSeaLevelPressureError()));
     combinedModel.setSeaSurfaceTemperature(
-        addFloats(model.getSeaSurfaceTemperature(), model.getSeaSurfaceTemperatureError()));
+        calculateReal(model.getSeaSurfaceTemperature(), model.getSeaSurfaceTemperatureError()));
     combinedModel.setSpecificHumidity(
-        addFloats(model.getSpecificHumidity(), model.getSpecificHumidityError()));
-    combinedModel.setTemperature(addFloats(model.getTemperature(), model.getTemperatureError()));
+        calculateReal(model.getSpecificHumidity(), model.getSpecificHumidityError()));
+    combinedModel.setTemperature(calculateReal(model.getTemperature(), model.getTemperatureError()));
     combinedModel.setTemperature2m(
-        addFloats(model.getTemperature2m(), model.getTemperature2mError()));
+        calculateReal(model.getTemperature2m(), model.getTemperature2mError()));
     combinedModel.setTotalPrecipitation12hr(
-        addFloats(model.getTotalPrecipitation12hr(), model.getTotalPrecipitation12hrError()));
+        calculateReal(model.getTotalPrecipitation12hr(), model.getTotalPrecipitation12hrError()));
     combinedModel.setUComponentOfWind(
-        addFloats(model.getUComponentOfWind(), model.getUComponentOfWindError()));
+        calculateReal(model.getUComponentOfWind(), model.getUComponentOfWindError()));
     combinedModel.setVComponentOfWind(
-        addFloats(model.getVComponentOfWind(), model.getVComponentOfWindError()));
+        calculateReal(model.getVComponentOfWind(), model.getVComponentOfWindError()));
     combinedModel.setUComponentOfWind10m(
-        addFloats(model.getUComponentOfWind10m(), model.getUComponentOfWind10mError()));
+        calculateReal(model.getUComponentOfWind10m(), model.getUComponentOfWind10mError()));
     combinedModel.setVComponentOfWind10m(
-        addFloats(model.getVComponentOfWind10m(), model.getVComponentOfWind10mError()));
+        calculateReal(model.getVComponentOfWind10m(), model.getVComponentOfWind10mError()));
     combinedModel.setVerticalVelocity(
-        addFloats(model.getVerticalVelocity(), model.getVerticalVelocityError()));
+        calculateReal(model.getVerticalVelocity(), model.getVerticalVelocityError()));
 
     return combinedModel;
   }
 
-  private Float addFloats(Float a, Float b) {
+  private Float calculateReal(Float a, Float b) {
     if (a == null || b == null) {
       return a;
     }
-    return a + b;
+    return a - b;
   }
 }
