@@ -144,14 +144,15 @@ def read_datasets(logger, inputs):
     
     return example_batch, diffs_stddev_by_level, mean_by_level, min_by_level, stddev_by_level, start_date
 
-def process_dataset(logger, dataset: xr.Dataset, bbox: dict, start_date: str) -> pd.DataFrame:
+def process_dataset(logger, dataset: xr.Dataset, bbox: dict, start_date: str, prediction: bool = False) -> pd.DataFrame:
     """
-    Process an xarray dataset to a pandas dataframe by:
-    - converting it to a dataframe
-    - dropping unneeded columns
-    - renaming columns with names that starts with numbers
-    - filtering by bounding box
-    - calculating datetime from start date and timedelta
+    Processes an xarray dataset by converting it to a pandas DataFrame.
+
+    This function converts an xarray dataset to a pandas DataFrame, removes
+    unnecessary columns, renames columns that start with numbers, filters
+    the DataFrame based on a specified bounding box, and calculates the
+    datetime from a given start date and timedelta if the dataset represents
+    predictions.
 
     Parameters
     ----------
@@ -160,16 +161,20 @@ def process_dataset(logger, dataset: xr.Dataset, bbox: dict, start_date: str) ->
     dataset : xr.Dataset
         The xarray dataset to process.
     bbox : dict
-        The bounding box to filter by. If None, no filtering is done.
+        The bounding box to filter the data by, with keys 'min_lon', 'max_lon',
+        'min_lat', and 'max_lat'. If None, no filtering is applied.
     start_date : str
-        The start date to use for calculating datetime.
+        The start date used for calculating the datetime, formatted as 'YYYY-MM-DD'.
+    prediction : bool, optional
+        A flag indicating if the dataset is for predictions, in which case
+        the datetime will be calculated. Defaults to False.
 
     Returns
     -------
     pd.DataFrame
-        The processed pandas dataframe.
+        A pandas DataFrame with processed data.
     """
-    
+
     logger.info("Converting xarray dataset to pandas dataframe")
     df = dataset.to_dataframe().reset_index()
     
@@ -189,9 +194,10 @@ def process_dataset(logger, dataset: xr.Dataset, bbox: dict, start_date: str) ->
         df = df[df.lat.between(bbox['min_lat'], bbox['max_lat'])]
     
     # calculate datetime from start date and timedelta
-    df['datetime'] = pd.to_datetime(start_date)
-    df['time'] = pd.to_timedelta(df['time'],'ns')
-    df['datetime'] = df["time"] + df['datetime']
+    if prediction:
+        df['datetime'] = pd.to_datetime(start_date)
+        df['time'] = pd.to_timedelta(df['time'],'ns')
+        df['datetime'] = df["time"] + df['datetime'] + pd.to_timedelta(43200000000000, 'ns')
     del df['time']
     
     logger.debug(df.shape)
@@ -221,7 +227,7 @@ def save_predictions(logger, predictions: xr.Dataset, example_batch: xr.Dataset,
     """
     
     logger.info("Processing predictions dataset")
-    predictions_df = process_dataset(logger, predictions, bbox, start_date)
+    predictions_df = process_dataset(logger, predictions, bbox, start_date, True)
     
     logger.info("Processing example batch dataset")
     example_batch_df = process_dataset(logger, example_batch, bbox, start_date)
