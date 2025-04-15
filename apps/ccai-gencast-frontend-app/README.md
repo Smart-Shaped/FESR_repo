@@ -1,0 +1,70 @@
+# GenCast Prediction Viewer
+
+## Overview
+
+GenCast Prediction Viewer is a web application designed to visualize and analyze meteorological prediction data. The application provides an interactive interface for comparing real data with predicted data, calculating error metrics, and visualizing geographical distributions of meteorological variables.
+
+## Features
+
+- Interactive parameter selection (datetime, atmospheric level, variables)
+- Heatmap visualization of meteorological data
+- Side-by-side comparison of real and predicted data
+- Error visualization with symmetric color scales
+- Interactive map interface with Leaflet
+- Time series analysis for selected geographical points
+- Responsive design for various screen sizes
+
+## Technology Stack
+
+- React.js
+- Bootstrap for responsive UI
+- Plotly.js for data visualization
+- Leaflet for interactive maps
+- Axios for API communication
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm (v6 or higher)
+
+### Installation
+
+1. Install dependencies
+
+```bash
+npm install
+ ```
+2. Start the development server
+```bash
+npm start
+ ```
+3. Open your browser and navigate to `http://localhost:3000`
+
+## Project Structure
+
+- `/public`: Static assets
+- `/src`: Source code
+- `/src/components`: Components of the application
+- `/src/services`:  API and data services
+
+
+## Usage
+
+1. Select parameters from the navigation bar (datetime, level, variable)
+2. View the heatmap visualization showing real data, predicted data, and error metrics
+3. Interact with the map to select specific geographical points
+4. Analyze time series data for selected points
+
+## API Integration
+
+The application connects to a backend API that provides:
+- Available parameters (datetimes, levels, variables)
+- Geographical data for selected parameters
+- Time series data for specific locations
+
+## Acknowledgments
+
+- Developed by Smart Shaped srl
+- Funded by REGIONE ABRUZZO A VALERE SUL PR FESR ABRUZZO 2021-2027, CODICE CUP C29J24000080007
