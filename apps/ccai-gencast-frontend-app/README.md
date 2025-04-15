@@ -63,8 +63,3 @@ The application connects to a backend API that provides:
 - Available parameters (datetimes, levels, variables)
 - Geographical data for selected parameters
 - Time series data for specific locations
-
-## Acknowledgments
-
-- Developed by Smart Shaped srl
-- Funded by REGIONE ABRUZZO A VALERE SUL PR FESR ABRUZZO 2021-2027, CODICE CUP C29J24000080007
