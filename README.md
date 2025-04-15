@@ -28,6 +28,8 @@ In order to move data from Surface and make them accessible via FESR application
 
 - Install and run [Surface](surface/README.md)
 
+- Run [FTP server](FTP/README.md)
+
 - Follow the tutorial
 
 ## Acknowledgments
