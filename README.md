@@ -29,3 +29,8 @@ In order to move data from Surface and make them accessible via FESR application
 - Install and run [Surface](surface/README.md)
 
 - Follow the tutorial
+
+## Acknowledgments
+
+- Developed by Smart Shaped srl
+- Funded by REGIONE ABRUZZO A VALERE SUL PR FESR ABRUZZO 2021-2027, CODICE CUP C29J24000080007
