@@ -23,3 +23,9 @@ The steps to reproduce the study are as follows:
 - [ccai-gencast-ml-app steps](apps/ccai-gencast-ml-app/README.md)
 
 ## Communication with Surface
+
+In order to move data from Surface and make them accessible via FESR applications follow these steps:
+
+- Install and run [Surface](surface/README.md)
+
+- Follow the tutorial
