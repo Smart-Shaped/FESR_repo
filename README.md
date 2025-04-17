@@ -4,7 +4,7 @@ This repository contains the source code for the SmartFESR teachnology stack, a 
 
 ## Docker
 
-SmartFESR can be used with Docker. The Docker documentation can be found in the [docs/docker](docs/docker) directory.
+SmartFESR can be used with Docker. The Docker documentation can be found in the [/docker](/docker) folder.
 
 ## Replication Study of the GenCast Model inference
 
