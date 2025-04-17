@@ -36,11 +36,11 @@ In order to move data from Surface and make them accessible via FESR application
 
 - Run an FTP file ingestion with Surface, following this [tutorial](https://drive.google.com/file/d/1F-DJC0sLVAHiH9uqLj6SnU-G0-Wyc9m7/view?usp=sharing).
 
-- Optionally, you can also execute a backup of all surface data, following this [tutorial](https://drive.google.com/file/d/1t6ycGFNASB2DO9ucPSzNnEy5bCHEBXAk/view?usp=sharing).
+- Optionally, you can also execute a backup of all Surface data, following this [tutorial](https://drive.google.com/file/d/1t6ycGFNASB2DO9ucPSzNnEy5bCHEBXAk/view?usp=sharing).
 
 - Proceed on our [Docker documentation](/docker/README.md).
 
-- Then, all Surface data can be reached from Fesr applications thanks to the [ccai_surface-data_fusion-app](apps/ccai-surface-data_fusion-app). In order to do that, watch the last [tutorial](https://drive.google.com/file/d/1neMW9stwkGOOuE28fnyKln4D9uMniadx/view?usp=sharing).
+- Then, all Surface data can be reached from FESR applications thanks to the [ccai_surface-data_fusion-app](apps/ccai-surface-data_fusion-app). In order to do that, watch the last [tutorial](https://drive.google.com/file/d/1neMW9stwkGOOuE28fnyKln4D9uMniadx/view?usp=sharing).
 
 ## Acknowledgments
 
