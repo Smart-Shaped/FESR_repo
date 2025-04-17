@@ -5,7 +5,7 @@ This project is the machine learning application for the GenCast model, develope
 ## Technologies Used
 
 - **Apache Spark**: Used for distributed data processing and orchestration.
-- **HDFS**: Used for storing and accessing large datasets.
+- **Apache Hadoop**: Supports integration with Hadoop Distributed File System for large-scale data storage.
 - **Apache Cassandra**: Used to store the inference data and the difference with respect to the real values of the test set.
 
 ## Directory Structure

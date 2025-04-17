@@ -6,7 +6,7 @@ This project is a data fusion service developed by Smart Shaped, focused on inte
 
 - **Apache Spark**: Used for big data processing.
 - **Apache Cassandra**: Used to store informations for data fusion.
-- **HDFS**: Supports integration with Hadoop Distributed File System for large-scale data storage.
+- **Apache Hadoop**: Supports integration with Hadoop Distributed File System for large-scale data storage.
 
 ## Directory Structure
 

@@ -1,46 +1,33 @@
 # GenCast Serving
 
 A Spring Boot application that provides a REST API for accessing GenCast weather prediction data stored in a Cassandra database.
+The application serves meteorological prediction data through a set of RESTful endpoints, allowing filtering by various parameters such as level, timestamp, latitude, and longitude, making it easy to retrieve specific weather predictions. It also provides metadata about available data (levels, timestamps, column names), a combined data view that merges prediction values with their error margins, and time series data for specific geographical points. Finally, it provides OpenAPI documentation for all endpoints.
 
-## Overview
+## Technology Used
 
-GenCast Serving is designed to serve meteorological prediction data through a set of RESTful endpoints. The application allows filtering data by various parameters such as level, timestamp, latitude, and longitude, making it easy to retrieve specific weather predictions.
-
-## Features
-
-- Retrieve weather predictions with various filtering options
-- Get metadata about available data (levels, timestamps, column names)
-- Combined data view that merges prediction values with their error margins
-- Time series data for specific geographical points
-- OpenAPI documentation for all endpoints
-
-## Technology Stack
-
-- Java 21
-- Spring Boot 3.4.2
-- Spring Data Cassandra
-- Springdoc OpenAPI
-- Lombok
-- Maven
-
-## Prerequisites
-
-- JDK 21
-- Apache Cassandra
-- Maven
+- **Spring Boot**: Used as the web application framework for the REST API.
+- **Springdoc OpenAPI**: Used to generate OpenAPI documentation for the REST API.
+- **Apache Cassandra**: Used as the NoSQL database to store the GenCast weather prediction data.
 
 ## Configuration
 
 The application connects to a Cassandra database. Configuration can be found in `application.properties`:
 
-## Properties
 - spring.cassandra.keyspace-name=ml_keyspace
 - spring.cassandra.contact-points=localhost
 - spring.cassandra.port=9042
 - spring.cassandra.local-datacenter=datacenter1
 - spring.cassandra.schema-action=CREATE_IF_NOT_EXISTS
 
-## API Endpoints 
+## Data Model
+
+The application uses the following main data models:
+
+- GencastModel - Represents the weather prediction data with error margins
+- GencastCombinedModel - Represents the combined prediction data (value + error)
+- GencastModelId - Composite primary key for the Cassandra table
+
+## API Endpoints
 
 - /gencast/first500 - Get first 500 rows of GenCast predictions
 - /gencast/timestamps - Get all unique timestamps
@@ -53,36 +40,24 @@ The application connects to a Cassandra database. Configuration can be found in 
 - /gencast/columnNames/dataVars - Get all column names excluding IDs
 - /gencast/columnNames/dataVars/excludeErrors - Get column names excluding errors
 
-## Building and running the application 
-
-To build the project:
-
-```bash
-mvn clean package
- ```
+## Building and running the application
 
 To run the application:
 
 ```bash
 java -jar target/gencast_serving-1.0.0-SNAPSHOT.jar
- ```
+```
 
 Or using Maven:
 
 ```bash
 mvn spring-boot:run
- ```
+```
 
 ## API Documentation
+
 Once the application is running, you can access the OpenAPI documentation at:
 
 ```plaintext
 http://localhost:8080/swagger-ui.html
- ```
-
-## Data Model
-The application uses the following main data models:
-
-- GencastModel - Represents the weather prediction data with error margins
-- GencastCombinedModel - Represents the combined prediction data (value + error)
-- GencastModelId - Composite primary key for the Cassandra table
+```
